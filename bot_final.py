@@ -206,8 +206,10 @@ class QuranBot:
     
     def format_verse_message(self, verse: Dict) -> str:
         """تنسيق رسالة الآية بتنسيق جميل"""
+        # تنظيف النص من المسافات الزائدة
+        cleaned_text = verse['text'].strip()
         # استخدام القوس المزخرف - بدون مسافات زائدة
-        formatted_text = f"﴿{verse['text']}﴾"
+        formatted_text = f"﴿{cleaned_text}﴾"
         
         return f"{formatted_text}\n\n{verse['surah_ar']} - {verse['ayah_number']}\n\nقناة آية كل 15 دقيقة"
     
