@@ -206,14 +206,10 @@ class QuranBot:
     
     def format_verse_message(self, verse: Dict) -> str:
         """تنسيق رسالة الآية بتنسيق جميل"""
-        # استخدام القوس المزخرف
+        # استخدام القوس المزخرف - بدون مسافات زائدة
         formatted_text = f"﴿{verse['text']}﴾"
         
-        return f"""{formatted_text}
-
-{verse['surah_ar']} - {verse['ayah_number']}
-
-قناة آية كل 15 دقيقة"""
+        return f"{formatted_text}\n\n{verse['surah_ar']} - {verse['ayah_number']}\n\nقناة آية كل 15 دقيقة"
     
     async def send_verse_to_channel(self):
         """إرسال آية إلى القناة"""
