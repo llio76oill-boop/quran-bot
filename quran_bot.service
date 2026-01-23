@@ -1,0 +1,26 @@
+[Unit]
+Description=Quran Bot Service - Sends Quranic Verses to Telegram Channel
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/quran_bot
+ExecStart=/usr/bin/python3 /home/quran_bot/bot_final.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=quran_bot
+
+# حدود الموارد
+MemoryLimit=256M
+CPUQuota=50%
+
+# متغيرات البيئة
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+EnvironmentFile=/home/quran_bot/.env
+
+[Install]
+WantedBy=multi-user.target

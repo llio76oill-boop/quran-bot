@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  quran-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quran-telegram-bot
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - CHANNEL_ID=${CHANNEL_ID}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+      - ./user_preferences.json:/app/user_preferences.json
+    restart: unless-stopped
+    networks:
+      - quran-network
+
+networks:
+  quran-network:
+    driver: bridge

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: quran-bot-1
+    runtime: python3
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot_final.py
+    envVars:
+      - key: TELEGRAM_TOKEN
+        scope: run
+      - key: CHANNEL_ID
+        scope: run
+      - key: PORT
+        value: 8000
